@@ -1,0 +1,12 @@
+snippet chunk
+# 将 index iterable 转化为 batch index iterable
+# 如 chunk([4, 2, 3, 1], 2) ==> [[4, 2], [3, 1]]
+def chunk(iterable, chunk_size):
+    ret = []
+    for record in iterable:
+        ret.append(record)
+        if len(ret) == chunk_size:
+            yield ret
+            ret = []
+    if ret:
+        yield ret
